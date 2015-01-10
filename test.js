@@ -2,5 +2,5 @@
 
 hasher = require('./node-cryptohash.js');
 
-hash = hasher.createHash('blabla1');
+hash = hasher.createHash('blabla');
 console.log(hash);

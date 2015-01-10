@@ -20,18 +20,18 @@ module.exports = {
 		hash_length: 64,		
 	},
 
-	createHash: function(password) {
+	createHash: function(password, salt) {
 		// create random salt
 		var _ = this.options;
 
-		var salt = crypto.pseudoRandomBytes(_.salt_length).toString('base64');
+		var salt = salt || crypto.pseudoRandomBytes(_.salt_length).toString('base64');
 
 		// create hash with that salt and return the both as an object
 		var hash = crypto.pbkdf2Sync(password, salt, _.iterations, _.hash_length).toString('base64');
 		return { hashedPassword: hash, salt: salt };
 	},
 
-	verifyHash: function(options) {
+	verifyHash: function(password) {
 		// yet to be implemented
 	}
 }
