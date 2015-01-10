@@ -13,20 +13,24 @@
 var crypto = require('crypto');
 
 module.exports = {
-	createHash: function(password, options) {
-		
+	options: {
 		// initialize or set defaults
-		var salt_length = options.salt_length || 50;
-		var iterations = options.iterations || 1000;
-		var hash_length = options.key_length || 80;
+		salt_length: 64,
+		iterations: 1000,
+		hash_length: 64,		
+	},
 
+	createHash: function(password) {
 		// create random salt
-		var salt = crypto.pseudoRandomBytes(salt_length).toString('base64');
+		var _ = this.options;
+
+		var salt = crypto.pseudoRandomBytes(_.salt_length).toString('base64');
 
 		// create hash with that salt and return the both as an object
-		var hash = crypto.pbkdf2Sync(password, salt, iterations, hash_length).toString('base64');
+		var hash = crypto.pbkdf2Sync(password, salt, _.iterations, _.hash_length).toString('base64');
 		return { hashedPassword: hash, salt: salt };
 	},
+
 	verifyHash: function(options) {
 		// yet to be implemented
 	}
