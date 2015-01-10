@@ -1,14 +1,6 @@
 // Author: Niels Hilderink
 //
 // Experimentin with Node.js crypto
-//
-// options
-//	.salt_length
-//	.hash_length
-//	.iterations
-//
-//
-//
 
 var crypto = require('crypto');
 
@@ -31,8 +23,16 @@ module.exports = {
 		return { hashedPassword: hash, salt: salt };
 	},
 
-	verifyHash: function(password) {
-		// yet to be implemented
+	verifyHash: function(password, salt, pw_hash) {
+		if (!salt) { 
+			console.log('Pass the salt please') 
+		} else {
+			var hash = crypto.pbkdf2Sync(password, salt, _.iterations, _.hash_length).toString('base64');
+			if (hash === pw_hash) {
+				console.log('Password correct');
+			} else {
+				console.log('Password incorrect');
+			}
+		}
 	}
 }
-
