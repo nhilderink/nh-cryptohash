@@ -24,10 +24,14 @@ module.exports = {
 	},
 
 	verifyHash: function(password, salt, pw_hash) {
+		var _ = this.options;
 		if (!salt) { 
 			console.log('Pass the salt please') 
 		} else {
+			// create a hash from the given password
 			var hash = crypto.pbkdf2Sync(password, salt, _.iterations, _.hash_length).toString('base64');
+			
+			// compare the given hash to the existing hash
 			if (hash === pw_hash) {
 				console.log('Password correct');
 			} else {
