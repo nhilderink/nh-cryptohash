@@ -23,7 +23,7 @@ module.exports = {
 		return { hashedPassword: hash, salt: salt };
 	},
 
-	verifyHash: function(password, salt, pw_hash) {
+	verifyHash: function(password, salt, pWash) {
 		var _ = this.options;
 		if (!salt) { 
 			console.log('Pass the salt please') 
@@ -32,7 +32,7 @@ module.exports = {
 			var hash = crypto.pbkdf2Sync(password, salt, _.iterations, _.hash_length).toString('base64');
 			
 			// compare the given hash to the existing hash
-			if (hash === pw_hash) {
+			if (hash === pWhash) {
 				console.log('Password correct');
 			} else {
 				console.log('Password incorrect');
