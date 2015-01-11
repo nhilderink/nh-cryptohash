@@ -1,0 +1,24 @@
+{
+  "name": "nh-cryptohash",
+  "version": "1.0.1",
+  "description": "Node.js password hasher/verifier using the built-in crypto module.",
+  "main": "nh-cryptohash.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nhilderink/nh-cryptohash.git"
+  },
+  "keywords": [
+    "hash",
+    "password",
+    "crypto"
+  ],
+  "author": "Niels Hilderink <contact@nielshilderink.nl> (http://wwww.nielshilderink.nl/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhilderink/nh-cryptohash/issues"
+  },
+  "homepage": "https://github.com/nhilderink/nh-cryptohash"
+}
