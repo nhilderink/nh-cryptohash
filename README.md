@@ -1,4 +1,4 @@
-node-cryptohash
+nh-cryptohash
 ===============
 
 A super simple library to create password hmac-sha1 hashes using the Node.js crypto module.
